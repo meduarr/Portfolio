@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maria Eduarda | Desenvolvedora</title>
+    <meta
+      name="description"
+      content="Portfólio de Maria Eduarda — desenvolvedora apaixonada por transformar ideias em soluções reais com tecnologia."
+    />
+    <meta name="theme-color" content="#07060c" />
+
+    <!-- Open Graph (pré-visualização ao compartilhar o link) -->
+    <meta property="og:title" content="Maria Eduarda | Desenvolvedora" />
+    <meta
+      property="og:description"
+      content="Tecnologia, código e ideias que viram soluções reais."
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+    <!-- Fontes: Space Grotesk (títulos/texto) + JetBrains Mono (detalhes de código) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ícones: Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Estilos do portfólio -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Fundo decorativo (grade + brilhos roxos) -->
+    <div class="bg-decor" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-orb bg-orb--1"></div>
+      <div class="bg-orb bg-orb--2"></div>
+    </div>
+
+    <!-- =========================================================
+       1. CABEÇALHO
+       ========================================================= -->
+    <header class="header" id="header">
+      <div class="container header__inner">
+        <a href="#inicio" class="brand" aria-label="Ir para o início">
+          <span class="brand__name">Maria Eduarda</span>
+          <span class="brand__tagline">// Meu espaço digital</span>
+        </a>
+
+        <!-- Botão do menu (visível só no celular/tablet) -->
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav" id="nav" aria-label="Navegação principal">
+          <a href="#inicio" class="nav__link is-active">início</a>
+          <a href="#tecnologias" class="nav__link">tecnologias</a>
+          <a href="#projetos" class="nav__link">projetos</a>
+          <a href="#contato" class="nav__link nav__link--cta">contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================================================
+         2. APRESENTAÇÃO (HERO)
+         ========================================================= -->
+      <section class="hero" id="inicio">
+        <div class="container hero__inner">
+          <!-- Lado esquerdo: logo ME -->
+          <div class="hero__logo-wrap reveal">
+            <div class="logo-me" aria-label="Logo com as iniciais ME">
+              <div class="logo-me__ring" aria-hidden="true"></div>
+              <div class="logo-me__core">
+                <span class="logo-me__bracket" aria-hidden="true">&lt;</span>
+                <span class="logo-me__letters">ME</span>
+                <span class="logo-me__bracket" aria-hidden="true">/&gt;</span>
+              </div>
+              <!-- Cantos decorativos -->
+              <span
+                class="logo-me__corner logo-me__corner--tl"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="logo-me__corner logo-me__corner--br"
+                aria-hidden="true"
+              ></span>
+            </div>
+
+            <!-- Mini "status" estilo terminal -->
+            <div class="status-chip">
+              <span class="status-chip__dot"></span>
+              <span>Aberta a novos projetos</span>
+            </div>
+          </div>
+
+          <!-- Lado direito: saudação, nome e texto -->
+          <div class="hero__content">
+            <p class="hero__hello reveal">
+              <span class="hero__prompt" aria-hidden="true">&gt;_</span>
+              <span id="typed" data-text="Hello World!">Hello World!</span
+              ><span class="caret" aria-hidden="true"></span>
+            </p>
+
+            <h1 class="hero__name reveal">
+              Maria <span class="gradient-text">Eduarda</span>
+            </h1>
+
+            <p class="hero__role reveal">
+              <i class="fa-solid fa-code" aria-hidden="true"></i>
+              Desenvolvedora
+            </p>
+
+            <!-- Texto de apresentação: edite à vontade -->
+            <p class="hero__text reveal">
+              Desenvolvo soluções que tornam o dia a dia mais simples e
+              eficiente.
+              <strong>Brincando com código,</strong> uma desenvolvedora
+              apaixonada por transformar ideias em soluções reais com
+              tecnologia.
+            </p>
+
+            <div class="hero__actions reveal">
+              <a href="#projetos" class="btn btn--primary">
+                Ver projetos
+                <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+              </a>
+              <a href="#contato" class="btn btn--ghost">
+                Fale comigo
+                <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Indicador de rolagem -->
+        <a
+          href="#tecnologias"
+          class="scroll-hint"
+          aria-label="Rolar para a próxima seção"
+        >
+          <span></span>
+        </a>
+      </section>
+
+      <!-- =========================================================
+         3. TECNOLOGIAS E FERRAMENTAS
+         ========================================================= -->
+      <section class="section" id="tecnologias">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__index">01.</span>
+            <h2 class="section__title">Tecnologias e ferramentas</h2>
+            <p class="section__subtitle">
+              Linguagens, bibliotecas e ferramentas com as quais já coloquei a
+              mão no código.
+            </p>
+          </header>
+
+          <!--
+          Para adicionar uma tecnologia, copie um <li class="tech"> e troque:
+          - o ícone (https://fontawesome.com/icons)
+          - o nome e a categoria
+          - a cor em style="--tech-color: ..."
+        -->
+          <ul class="tech-grid">
+            <li class="tech reveal" style="--tech-color: #e34f26">
+              <i class="fa-brands fa-html5 tech__icon" aria-hidden="true"></i>
+              <span class="tech__name">HTML</span>
+              <span class="tech__cat">estrutura</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #2965f1">
+              <i
+                class="fa-brands fa-css3-alt tech__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="tech__name">CSS</span>
+              <span class="tech__cat">estilo</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #f7df1e">
+              <i class="fa-brands fa-js tech__icon" aria-hidden="true"></i>
+              <span class="tech__name">JavaScript</span>
+              <span class="tech__cat">linguagem</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #8892bf">
+              <i class="fa-brands fa-php tech__icon" aria-hidden="true"></i>
+              <span class="tech__name">PHP</span>
+              <span class="tech__cat">back-end</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #ffd343">
+              <i class="fa-brands fa-python tech__icon" aria-hidden="true"></i>
+              <span class="tech__name">Python</span>
+              <span class="tech__cat">linguagem</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #4b9bbe">
+              <i class="fa-solid fa-database tech__icon" aria-hidden="true"></i>
+              <span class="tech__name">MySQL</span>
+              <span class="tech__cat">banco de dados</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #538dd7">
+              <i
+                class="fa-brands fa-font-awesome tech__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="tech__name">Font Awesome</span>
+              <span class="tech__cat">ícones</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #e84d3d">
+              <i
+                class="fa-solid fa-cloud-arrow-down tech__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="tech__name">JSDelivr</span>
+              <span class="tech__cat">CDN</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #c084fc">
+              <i
+                class="fa-solid fa-layer-group tech__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="tech__name">Parallax.js</span>
+              <span class="tech__cat">biblioteca</span>
+            </li>
+            <li class="tech reveal" style="--tech-color: #34d399">
+              <i
+                class="fa-solid fa-envelope-circle-check tech__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="tech__name">PHPMailer</span>
+              <span class="tech__cat">e-mail</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         4. PROJETOS EM DESTAQUE
+         Cada card tem sua própria identidade via variáveis CSS:
+         --accent (cor principal) e --accent-2 (cor secundária).
+         ========================================================= -->
+      <section class="section" id="projetos">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__index">02.</span>
+            <h2 class="section__title">Projetos em destaque</h2>
+            <p class="section__subtitle">
+              Do primeiro script em Python a um e-commerce completo: um pouco da
+              minha evolução.
+            </p>
+          </header>
+
+          <div class="projects">
+            <!-- Projeto 1: Psicóloga Dálete Cabral -->
+            <article
+              class="project reveal"
+              style="--accent: #d8b4fe; --accent-2: #f0abfc"
+            >
+              <div class="project__preview">
+                <div class="project__window">
+                  <span></span><span></span><span></span>
+                  <span class="project__url">daletecabral.site.je</span>
+                </div>
+                <div class="project__visual">
+                  <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                </div>
+                <span class="project__number">01</span>
+              </div>
+              <div class="project__body">
+                <span class="project__type">Site institucional</span>
+                <h3 class="project__title">
+                  Site Profissional <span>| Psicóloga Dálete Cabral</span>
+                </h3>
+                <p class="project__desc">
+                  Site institucional para uma psicóloga, com apresentação
+                  profissional, informações sobre seus serviços e canais de
+                  contato.
+                </p>
+                <ul class="project__tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                </ul>
+                <p class="project__note">
+                  <i
+                    class="fa-solid fa-wand-magic-sparkles"
+                    aria-hidden="true"
+                  ></i>
+                  Desenvolvido com apoio de inteligência artificial (Claude)
+                </p>
+                <a
+                  href="https://daletecabral.site.je/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project__link"
+                >
+                  Acessar site
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Projeto 2: Feirinha de Tambaú -->
+            <article
+              class="project reveal"
+              style="--accent: #fb923c; --accent-2: #22d3ee"
+            >
+              <div class="project__preview">
+                <div class="project__window">
+                  <span></span><span></span><span></span>
+                  <span class="project__url">tambau.web1337.net</span>
+                </div>
+                <div class="project__visual">
+                  <i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i>
+                </div>
+                <span class="project__number">02</span>
+              </div>
+              <div class="project__body">
+                <span class="project__type">Projeto de extensão</span>
+                <h3 class="project__title">
+                  Feirinha de Tambaú <span>| João Pessoa – PB</span>
+                </h3>
+                <p class="project__desc">
+                  Site desenvolvido em um projeto de extensão universitária para
+                  divulgar informações sobre a Feirinha de Tambaú, em João
+                  Pessoa – PB.
+                </p>
+                <ul class="project__tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                </ul>
+                <p class="project__note">
+                  <i
+                    class="fa-solid fa-wand-magic-sparkles"
+                    aria-hidden="true"
+                  ></i>
+                  Desenvolvido com apoio de inteligência artificial (Claude)
+                </p>
+                <a
+                  href="https://tambau.web1337.net/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project__link"
+                >
+                  Acessar site
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Projeto 3: Urban Prime -->
+            <article
+              class="project reveal"
+              style="--accent: #facc15; --accent-2: #a78bfa"
+            >
+              <div class="project__preview">
+                <div class="project__window">
+                  <span></span><span></span><span></span>
+                  <span class="project__url">urbanprime.ct.ws</span>
+                </div>
+                <div class="project__visual">
+                  <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                </div>
+                <span class="project__number">03</span>
+              </div>
+              <div class="project__body">
+                <span class="project__type">E-commerce</span>
+                <h3 class="project__title">
+                  Urban Prime <span>| Loja virtual</span>
+                </h3>
+                <p class="project__desc">
+                  E-commerce com cadastro, login e recuperação de senha. A
+                  recuperação envia um link por e-mail usando PHPMailer.
+                </p>
+                <ul class="project__tags">
+                  <li>PHP</li>
+                  <li>MySQL</li>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>PHPMailer</li>
+                  <li>Font Awesome</li>
+                  <li>Parallax.js</li>
+                  <li>JSDelivr</li>
+                </ul>
+                <a
+                  href="https://urbanprime.ct.ws/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project__link"
+                >
+                  Acessar site
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Projeto 4: Sistema de Atendimento (UNIPÊ) -->
+            <article
+              class="project reveal"
+              style="--accent: #4ade80; --accent-2: #38bdf8"
+            >
+              <div class="project__preview">
+                <div class="project__window">
+                  <span></span><span></span><span></span>
+                  <span class="project__url">github.com/meduarr/projetooo</span>
+                </div>
+                <div class="project__visual project__visual--terminal">
+                  <code>
+                    <span class="t-muted">$</span> python atendimento.py<br />
+                    <span class="t-accent">&gt;</span> Mesa 4: pedido recebido ✓
+                  </code>
+                </div>
+                <span class="project__number">04</span>
+              </div>
+              <div class="project__body">
+                <span class="project__type">Projeto acadêmico · UNIPÊ</span>
+                <h3 class="project__title">
+                  Sistema de Atendimento <span>| Restaurantes</span>
+                </h3>
+                <p class="project__desc">
+                  Simulação de um sistema de atendimento para restaurantes,
+                  desenvolvida em dupla no primeiro período da graduação em
+                  Análise e Desenvolvimento de Sistemas.
+                </p>
+                <ul class="project__tags">
+                  <li>Python</li>
+                </ul>
+                <a
+                  href="https://github.com/meduarr/projetooo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project__link"
+                >
+                  Ver no GitHub
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         5. CONTATO
+         ========================================================= -->
+      <section class="section section--contact" id="contato">
+        <div class="container">
+          <header class="section__head section__head--center reveal">
+            <span class="section__index">03.</span>
+            <h2 class="section__title">Conecte-se comigo</h2>
+            <p class="section__subtitle">
+              Tem uma ideia, uma oportunidade ou só quer trocar uma ideia sobre
+              código? Me chama!
+            </p>
+          </header>
+
+          <div class="contacts">
+            <!-- WhatsApp: o número é configurado em assets/js/main.js (WHATSAPP_NUMBER) -->
+            <a
+              href="#contato"
+              id="whatsappLink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact reveal"
+              style="--c: #25d366"
+            >
+              <i
+                class="fa-brands fa-whatsapp contact__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="contact__label">WhatsApp</span>
+              <span class="contact__value">Vamos conversar</span>
+              <i
+                class="fa-solid fa-arrow-right contact__arrow"
+                aria-hidden="true"
+              ></i>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/mariaeduarda-ms"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact reveal"
+              style="--c: #0a66c2"
+            >
+              <i
+                class="fa-brands fa-linkedin-in contact__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="contact__label">LinkedIn</span>
+              <span class="contact__value">in/mariaeduarda-ms</span>
+              <i
+                class="fa-solid fa-arrow-right contact__arrow"
+                aria-hidden="true"
+              ></i>
+            </a>
+
+            <a
+              href="https://github.com/meduarr"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact reveal"
+              style="--c: #e6edf3"
+            >
+              <i
+                class="fa-brands fa-github contact__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="contact__label">GitHub</span>
+              <span class="contact__value">@meduarr</span>
+              <i
+                class="fa-solid fa-arrow-right contact__arrow"
+                aria-hidden="true"
+              ></i>
+            </a>
+
+            <a
+              href="mailto:contato.mariaeduardamrs@gmail.com"
+              class="contact reveal"
+              style="--c: #c084fc"
+            >
+              <i
+                class="fa-solid fa-envelope contact__icon"
+                aria-hidden="true"
+              ></i>
+              <span class="contact__label">E-mail</span>
+              <span class="contact__value"
+                >contato.mariaeduardamrs@gmail.com</span
+              >
+              <i
+                class="fa-solid fa-arrow-right contact__arrow"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================================
+       RODAPÉ
+       ========================================================= -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>
+          <span class="accent">&lt;/&gt;</span>
+          <strong>Maria Eduarda</strong> · <span id="year">2026</span>
+        </p>
+        <a href="#inicio" class="footer__top" aria-label="Voltar ao topo">
+          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Aviso (toast) usado pelo JavaScript -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

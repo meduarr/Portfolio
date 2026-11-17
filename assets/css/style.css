@@ -1,0 +1,1221 @@
+/* ==========================================================================
+   PORTFÓLIO — MARIA EDUARDA
+   Estrutura do arquivo:
+   1. Variáveis (cores, fontes, espaçamentos)
+   2. Reset e base
+   3. Utilitários (container, botões, textos)
+   4. Fundo decorativo
+   5. Cabeçalho
+   6. Apresentação (hero) + logo ME
+   7. Seções (títulos)
+   8. Tecnologias
+   9. Projetos
+   10. Contato
+   11. Rodapé e toast
+   12. Animações
+   13. Responsividade
+   ========================================================================== */
+
+/* 1. VARIÁVEIS ------------------------------------------------------------ */
+:root {
+  /* Fundo */
+  --bg: #07060c;
+  --bg-elevated: #0e0b18;
+  --surface: rgba(255, 255, 255, 0.025);
+  --surface-hover: rgba(255, 255, 255, 0.045);
+
+  /* Bordas */
+  --border: rgba(167, 139, 250, 0.14);
+  --border-strong: rgba(167, 139, 250, 0.35);
+
+  /* Texto */
+  --text: #ece9f5;
+  --text-soft: #c4bdd8;
+  --muted: #8f88a6;
+
+  /* Roxo (identidade) */
+  --purple-50: #ede9fe;
+  --purple-300: #c4b5fd;
+  --purple-400: #a78bfa;
+  --purple-500: #8b5cf6;
+  --purple-600: #7c3aed;
+  --purple-800: #4c1d95;
+  --glow: rgba(139, 92, 246, 0.45);
+
+  /* Tipografia */
+  --font-sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+
+  /* Layout */
+  --container: 1160px;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --header-h: 72px;
+
+  /* Movimento */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 2. RESET E BASE --------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--purple-600);
+  color: #fff;
+}
+
+/* Foco visível para navegação por teclado */
+:focus-visible {
+  outline: 2px solid var(--purple-400);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Barra de rolagem */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--purple-800), var(--purple-600));
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+}
+
+/* 3. UTILITÁRIOS ---------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.accent {
+  color: var(--purple-400);
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, var(--purple-300) 0%, var(--purple-500) 55%, #d946ef 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease),
+    background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--purple-500), var(--purple-600));
+  color: #fff;
+  box-shadow: 0 6px 24px -8px var(--glow);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px -6px var(--glow);
+}
+
+.btn--ghost {
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: var(--purple-400);
+  transform: translateY(-2px);
+}
+
+/* 4. FUNDO DECORATIVO ----------------------------------------------------- */
+.bg-decor {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Grade sutil, desaparecendo nas bordas */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(167, 139, 250, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(167, 139, 250, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 30%, transparent 100%);
+}
+
+/* Brilhos roxos desfocados */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.35;
+}
+
+.bg-orb--1 {
+  width: 520px;
+  height: 520px;
+  top: -160px;
+  left: -120px;
+  background: var(--purple-600);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.bg-orb--2 {
+  width: 420px;
+  height: 420px;
+  bottom: -160px;
+  right: -120px;
+  background: #4c1d95;
+  animation: drift 22s ease-in-out infinite alternate-reverse;
+}
+
+/* 5. CABEÇALHO ------------------------------------------------------------ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+/* Classe adicionada via JS ao rolar a página */
+.header.is-scrolled {
+  background: rgba(7, 6, 12, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-width: 0;
+}
+
+.brand__name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.brand__tagline {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav__link {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: color 0.25s, background 0.25s;
+}
+
+.nav__link::before {
+  content: "#";
+  color: var(--purple-500);
+  margin-right: 2px;
+  opacity: 0.7;
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: #fff;
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.nav__link--cta {
+  border: 1px solid var(--border-strong);
+}
+
+/* Botão hambúrguer (escondido no desktop) */
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.3s;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* 6. APRESENTAÇÃO (HERO) -------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-h) + 40px) 0 80px;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 64px;
+}
+
+.hero__logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* --- Logo ME --- */
+.logo-me {
+  position: relative;
+  width: min(340px, 72vw);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Anel com gradiente girando */
+.logo-me__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 32%;
+  padding: 2px;
+  background: conic-gradient(from var(--angle, 0deg),
+      transparent 0%, var(--purple-400) 20%, transparent 40%,
+      transparent 60%, #d946ef 80%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin 8s linear infinite;
+}
+
+.logo-me__core {
+  position: absolute;
+  inset: 14px;
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(167, 139, 250, 0.22), transparent 60%),
+    linear-gradient(160deg, #15102a 0%, #0a0814 100%);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 60px -10px var(--glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.logo-me__letters {
+  font-size: clamp(4.5rem, 14vw, 7.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  background: linear-gradient(150deg, #fff 10%, var(--purple-300) 45%, var(--purple-500) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.5));
+}
+
+.logo-me__bracket {
+  font-family: var(--font-mono);
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  color: var(--purple-500);
+  opacity: 0.8;
+}
+
+/* Cantos decorativos estilo "mira" */
+.logo-me__corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-color: var(--purple-400);
+  border-style: solid;
+  opacity: 0.7;
+}
+
+.logo-me__corner--tl { top: -14px; left: -14px; border-width: 2px 0 0 2px; }
+.logo-me__corner--br { bottom: -14px; right: -14px; border-width: 0 2px 2px 0; }
+
+/* Selo "aberta a novos projetos" */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.status-chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  animation: pulse 2s infinite;
+}
+
+/* --- Conteúdo do hero --- */
+.hero__hello {
+  font-family: var(--font-mono);
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  color: var(--purple-300);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 1.6em;
+}
+
+.hero__prompt {
+  color: var(--purple-500);
+}
+
+/* Cursor piscando */
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background: var(--purple-400);
+  margin-left: -4px;
+  animation: blink 1s steps(1) infinite;
+}
+
+.hero__name {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+
+.hero__role {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-bottom: 24px;
+}
+
+.hero__role i {
+  color: var(--purple-400);
+}
+
+.hero__text {
+  font-size: 1.08rem;
+  color: var(--text-soft);
+  max-width: 56ch;
+  margin-bottom: 14px;
+}
+
+.hero__text strong {
+  color: var(--text);
+  font-weight: 600;
+  background: linear-gradient(transparent 62%, rgba(139, 92, 246, 0.35) 62%);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+/* Indicador de rolagem (mouse) */
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 38px;
+  border: 2px solid var(--border-strong);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+}
+
+.scroll-hint span {
+  width: 3px;
+  height: 7px;
+  border-radius: 3px;
+  background: var(--purple-400);
+  animation: scroll 1.8s ease-in-out infinite;
+}
+
+/* 7. SEÇÕES --------------------------------------------------------------- */
+.section {
+  padding: 110px 0;
+  position: relative;
+}
+
+.section__head {
+  margin-bottom: 56px;
+  max-width: 640px;
+}
+
+.section__head--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section__index {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--purple-400);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section__title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.section__subtitle {
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+/* 8. TECNOLOGIAS ---------------------------------------------------------- */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.tech {
+  --tech-color: var(--purple-400);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 30px 16px 24px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease),
+    background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+/* Linha colorida no topo que aparece no hover */
+.tech::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--tech-color);
+  border-radius: 0 0 4px 4px;
+  opacity: 0;
+  transform: scaleX(0.3);
+  transition: opacity 0.4s, transform 0.4s var(--ease);
+}
+
+.tech:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+  box-shadow: 0 14px 40px -18px var(--glow);
+}
+
+.tech:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.tech__icon {
+  font-size: 2.3rem;
+  margin-bottom: 6px;
+  color: var(--purple-300);
+  transition: color 0.4s, transform 0.4s var(--ease), filter 0.4s;
+}
+
+/* No hover, o ícone ganha a cor oficial da tecnologia */
+.tech:hover .tech__icon {
+  color: var(--tech-color);
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--tech-color) 55%, transparent));
+}
+
+.tech__name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.tech__cat {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* 9. PROJETOS ------------------------------------------------------------- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.project {
+  --accent: var(--purple-400);
+  --accent-2: var(--purple-600);
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.45s var(--ease), border-color 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
+}
+
+/* Luz que segue o mouse (posição definida via JS em --mx / --my) */
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(420px circle at var(--mx) var(--my),
+      color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: 0 24px 60px -28px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.project:hover::before {
+  opacity: 1;
+}
+
+/* Área de prévia com a identidade visual de cada projeto */
+.project__preview {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 110%, color-mix(in srgb, var(--accent) 45%, transparent), transparent 55%),
+    radial-gradient(circle at 90% -10%, color-mix(in srgb, var(--accent-2) 40%, transparent), transparent 55%),
+    #0b0914;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Textura de pontinhos */
+.project__preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+/* Barra de "janela de navegador" */
+.project__window {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: rgba(7, 6, 12, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+
+.project__window > span:not(.project__url) {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.project__window > span:nth-child(1) { background: #ff5f57; }
+.project__window > span:nth-child(2) { background: #febc2e; }
+.project__window > span:nth-child(3) { background: #28c840; }
+
+.project__url {
+  margin-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project__visual {
+  position: absolute;
+  inset: 52px 0 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  font-size: 3.6rem;
+  color: var(--accent);
+  filter: drop-shadow(0 0 22px color-mix(in srgb, var(--accent) 55%, transparent));
+  transition: transform 0.6s var(--ease);
+}
+
+.project:hover .project__visual {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+/* Variante "terminal" do projeto em Python */
+.project__visual--terminal {
+  font-size: 0.85rem;
+  filter: none;
+  justify-items: start;
+  padding: 0 28px;
+}
+
+.project__visual--terminal code {
+  font-family: var(--font-mono);
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.project:hover .project__visual--terminal {
+  transform: translateX(6px);
+}
+
+.t-muted { color: var(--muted); }
+.t-accent { color: var(--accent); }
+
+.project__number {
+  position: absolute;
+  right: 18px;
+  bottom: -14px;
+  z-index: 0;
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+}
+
+.project__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 26px 26px 28px;
+}
+
+.project__type {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.project__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.project__title span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.project__desc {
+  color: var(--text-soft);
+  font-size: 0.97rem;
+  margin-bottom: 18px;
+}
+
+.project__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.project__tags li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.project__note i {
+  color: var(--purple-400);
+  margin-top: 4px;
+}
+
+/* Botão do projeto fica sempre no rodapé do card */
+.project__link {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s, gap 0.3s var(--ease), box-shadow 0.3s;
+}
+
+.project__link:hover {
+  background: var(--accent);
+  color: #0b0914;
+  gap: 14px;
+  box-shadow: 0 8px 26px -10px var(--accent);
+}
+
+/* 10. CONTATO ------------------------------------------------------------- */
+.section--contact {
+  padding-bottom: 140px;
+}
+
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.contact {
+  --c: var(--purple-400);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.4s, background 0.4s;
+}
+
+.contact:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+}
+
+.contact__icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  color: var(--purple-300);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid var(--border);
+  transition: color 0.4s, background 0.4s, transform 0.4s var(--ease);
+}
+
+.contact:hover .contact__icon {
+  color: #fff;
+  background: var(--c);
+  transform: rotate(-8deg);
+}
+
+.contact__label {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.contact__value {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.contact__arrow {
+  position: absolute;
+  top: 28px;
+  right: 24px;
+  color: var(--muted);
+  transform: rotate(-45deg);
+  transition: transform 0.4s var(--ease), color 0.4s;
+}
+
+.contact:hover .contact__arrow {
+  color: var(--purple-300);
+  transform: rotate(-45deg) translateX(4px);
+}
+
+/* 11. RODAPÉ E TOAST ------------------------------------------------------ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.footer strong {
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.footer .accent {
+  font-family: var(--font-mono);
+}
+
+.footer__top {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s, background 0.3s, transform 0.3s var(--ease);
+}
+
+.footer__top:hover {
+  border-color: var(--purple-400);
+  background: rgba(139, 92, 246, 0.12);
+  transform: translateY(-3px);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 200;
+  transform: translate(-50%, 140%);
+  max-width: calc(100% - 32px);
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: #15102a;
+  border: 1px solid var(--border-strong);
+  font-size: 0.9rem;
+  box-shadow: 0 10px 40px -10px var(--glow);
+  transition: transform 0.45s var(--ease);
+}
+
+.toast.is-visible {
+  transform: translate(-50%, 0);
+}
+
+/* 12. ANIMAÇÕES ----------------------------------------------------------- */
+
+/* Elementos com .reveal surgem ao entrar na tela (controlado via JS) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transition-delay: var(--delay, 0s);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Sem JS, tudo aparece normalmente */
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* Permite animar o ângulo do gradiente do logo */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  to { --angle: 360deg; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes drift {
+  to { transform: translate(80px, 60px) scale(1.1); }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 13. RESPONSIVIDADE ------------------------------------------------------ */
+
+/* Notebooks */
+@media (max-width: 1100px) {
+  .tech-grid { grid-template-columns: repeat(4, 1fr); }
+  .contacts { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  :root { --header-h: 66px; }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+
+  .hero__hello,
+  .hero__actions { justify-content: center; }
+
+  .hero__text { margin-left: auto; margin-right: auto; }
+
+  .logo-me { width: min(260px, 64vw); }
+
+  .tech-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .projects { grid-template-columns: 1fr; }
+
+  .section { padding: 90px 0; }
+
+  /* Menu vira painel suspenso */
+  .nav-toggle { display: flex; }
+
+  .nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 16px;
+    right: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(14, 11, 24, 0.96);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px -20px #000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s var(--ease), visibility 0.3s;
+  }
+
+  .nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav__link {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+  }
+
+  .nav__link--cta { border: none; }
+
+  /* Cabeçalho fica sólido quando o menu está aberto */
+  .header.menu-open {
+    background: rgba(7, 6, 12, 0.92);
+    border-bottom-color: var(--border);
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .container { padding: 0 16px; }
+
+  .brand { flex-direction: column; gap: 0; }
+  .brand__name { font-size: 1.05rem; }
+  .brand__tagline { font-size: 0.7rem; }
+
+  .hero { padding-top: calc(var(--header-h) + 32px); }
+  .hero__text { font-size: 1rem; }
+  .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
+
+  .scroll-hint { display: none; }
+
+  .tech-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .tech { padding: 24px 12px 20px; }
+
+  .project__preview { height: 170px; }
+  .project__body { padding: 22px 20px 24px; }
+  .project__title { font-size: 1.2rem; }
+
+  .contacts { grid-template-columns: 1fr; }
+
+  .section { padding: 72px 0; }
+  .section__head { margin-bottom: 40px; }
+
+  .footer__inner { font-size: 0.8rem; }
+}
